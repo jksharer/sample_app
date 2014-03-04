@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
   
   def create
@@ -55,10 +56,10 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
     
-    def signed_in_user
-      store_location  #存储登陆前尝试访问的地址
-      redirect_to signin_path, notice: "Please sign in." unless sign_in?
-    end
+    # def signed_in_user
+      # store_location  #存储登陆前尝试访问的地址
+      # redirect_to signin_path, notice: "Please sign in." unless sign_in?
+    # end
     
     def correct_user
       @user = User.find(params[:id])

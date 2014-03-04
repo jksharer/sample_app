@@ -38,5 +38,10 @@ module SessionsHelper
   def store_location   #在session中存储尝试访问的地址
     session[:return_to] = request.fullpath if request.get?      
   end
+  
+  def signed_in_user
+      store_location  #存储登陆前尝试访问的地址
+      redirect_to signin_path, notice: "Please sign in." unless sign_in?
+  end
    
 end

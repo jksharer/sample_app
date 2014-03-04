@@ -15,5 +15,10 @@ FactoryGirl.define do
     end
   end
   
+  factory :micropost do
+    content  "Hello every body!"
+    user
+  end
+  
   
 end
