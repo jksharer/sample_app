@@ -179,6 +179,35 @@ input {
   }
 }
 
+.stats {
+  overflow: auto;
+  a {
+    float: left;
+    padding: 0 10px;  /*上内边距和下内边距为0，左和右内边距为10px*/
+    border-left: 1px solid $grayLighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
+  strong {
+    display: block;  /*此元素将显示为块级元素，此元素前后会带有换行符。*/
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+}
+
 /* microposts */
 
 .microposts {

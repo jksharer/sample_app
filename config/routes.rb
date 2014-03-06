@@ -1,8 +1,18 @@
 SampleApp::Application.routes.draw do
-  resources :users
+
+  resources :users do 
+    member do
+      get :following, :followers
+    end
+  end
+  #以上设置生成的REST路由   
+  # HTTP 请求 URL             动作                 具名路由
+  # GET /users/1/following  following following_user_path(1)
+  # GET /users/1/followers  followers followers_user_path(1)
+
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
-
+  resources :relationships, only: [:create, :destroy]
   
   root to: 'static_pages#home'
   match '/', to: 'static_pages#home', via: 'get'
